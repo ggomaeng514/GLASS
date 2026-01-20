@@ -12,9 +12,11 @@ GLASS is a novel method for explaining black-box deep language models (DLMs) by 
 
 ## 🏗️ Architecture
 
+
 <p align="center">
-  <img src="assets/architecture.png" alt="GLASS Architecture" width="800"/>
+  <img src="https://github.com/user-attachments/assets/c52b8b69-647a-49f7-8a3e-621084ead932" alt="GLASS Architecture" width="100%"/>
 </p>
+
 
 GLASS consists of three main components:
 
@@ -51,14 +53,14 @@ python -m spacy download en_core_web_sm
 
 ### Performance Comparison (10% word selection)
 
-| Method | Movies ACC | Movies AUROC | Graph-SST2 ACC | HateXplain ACC |
-|--------|------------|--------------|----------------|----------------|
-| LIME | 0.495 | 0.531 | 0.502 | 0.572 |
-| SHAP | 0.491 | 0.505 | 0.511 | 0.586 |
-| IG | 0.503 | 0.544 | 0.500 | 0.587 |
-| L2X | 0.561 | 0.596 | 0.526 | 0.493 |
-| **GLASS** | **0.829** | **0.954** | **0.767** | **0.673** |
-| Oracle (Full) | 0.859 | 0.942 | 0.842 | 0.674 |
+| Method | Movies AUROC/AUPRC | Graph-SST2 AUROC/AUPRC | HateXplain AUROC/AUPRC |
+|--------|---------------------|------------------------|------------------------|
+| SHAP | 0.505 / 0.518 | 0.651 / 0.631 | 0.710 / 0.563 |
+| LIME | 0.531 / 0.511 | 0.611 / 0.588 | 0.746 / 0.603 |
+| IG | 0.544 / 0.501 | 0.581 / 0.570 | 0.761 / 0.613 |
+| L2X | 0.596 / 0.590 | 0.552 / 0.558 | 0.624 / 0.479 |
+| **GLASS** | **0.954 / 0.962** | **0.864 / 0.860** | **0.833 / 0.713** |
+| Oracle (Full text) | 0.942 / 0.944 | 0.987 / 0.996 | 0.847 / 0.740 |
 
 *GLASS achieves 96.5% of oracle performance using only 10% of input words!*
 
@@ -66,13 +68,46 @@ python -m spacy download en_core_web_sm
 
 | Method | Time per Sample | Peak GPU Memory |
 |--------|-----------------|-----------------|
-| LIME | 6.13 s | 7.386 GB |
-| KernelSHAP | 2.00 s | 7.345 GB |
-| IG | 0.67 s | 28.245 GB |
-| **GLASS** | **0.08 s** | **6.235 GB** |
+| KernelSHAP | 2.00 s | 7.35 GB |
+| LIME | 6.13 s | 7.39 GB |
+| IG | 0.67 s | 28.25 GB |
+| **GLASS** | **0.08 s** | **6.24 GB** |
 
 **GLASS is 8-77× faster than memoryless methods!**
 
+
+
+
+
+### Linguistic Coherence: Alignment with Human Cognition
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/339bcc86-4a7a-434c-8227-806a88b96dfa" alt="Linguistic Coherence" width="900"/>
+</p>
+
+GCN (w/ Syn) produces more coherent explanations by:
+- Selecting grammatically central words (higher average degree)
+- Forming fewer, larger word clusters (fewer subgraphs)
+- Maintaining stronger connectivity (higher edge density)
+
+This demonstrates that **incorporating syntactic structure** yields explanations that better match human linguistic intuition.
+
+### Explanation Examples
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/55d92196-6984-48a3-a95a-4dcec0d667e1" alt="Efficiency Comparison" width="100%"/>
+</p>
+
+**Left: Text annotations**
+- 🟢 **Green**: Selected words matching human rationales
+- 🔴 **Red**: Unselected human rationales  
+- 🟠 **Orange**: Selected words beyond human annotations
+
+**Right:** Dependency graphs showing structural connectivity of selected words
+
+GLASS identifies coherent, structurally-connected word subsets that strongly align with human rationales while preserving linguistic structure.
+
+---
 
 ## 📁 Repository Structure
 ```
