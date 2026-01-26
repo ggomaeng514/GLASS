@@ -12,7 +12,7 @@ GLASS is a novel method for explaining black-box deep language models (DLMs) by 
 
 ## 🏗️ Architecture
 
-<img width="1500" height="509" alt="method" src="https://github.com/user-attachments/assets/f60631c0-ee05-450f-8d98-de5374cd747f" />
+![Overview](method.jpg)
 
 
 GLASS consists of three main components:
@@ -78,7 +78,7 @@ python -m spacy download en_core_web_sm
 
 ### Linguistic Coherence: Alignment with Human Cognition
 
-![structure_coherence](https://github.com/user-attachments/assets/ac117219-93ca-4a95-8ba0-b7ac2bd4c345)
+![Overview](structure_coherence.jpg)
 
 GCN (w/ Syn) produces more coherent explanations by:
 - Selecting grammatically central words (higher average degree)
@@ -89,7 +89,7 @@ This demonstrates that **incorporating syntactic structure** yields explanations
 
 ### Explanation Examples
 
-<img width="4336" height="672" alt="example_gcn" src="https://github.com/user-attachments/assets/e02199cd-280d-4397-b5da-212c0e7bcbeb" />
+![Overview](example_gcn.jpg)
 
 **Left: Text annotations**
 - 🟢 **Green**: Selected words matching human rationales
