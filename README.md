@@ -12,7 +12,7 @@ GLASS is a novel method for explaining black-box deep language models (DLMs) by 
 
 ## 🏗️ Architecture
 
-![Overview](method.jpg)
+![Overview](Main_method.jpg)
 
 
 GLASS consists of three main components:
